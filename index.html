@@ -8,44 +8,60 @@
 </head>
 <body>
     <h1>AI-based Badminton Team Formation</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#add-rate-player">Add and Rate Player</a></li>
+                <li><a href="#team-formation">Team Formation</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="add-rate-player">
+            <h1>Add and Rate Player</h1>
+            <div id="playerManagement">
+                <h2>Manage Players</h2>
+                <form id="ratingForm">
+                    <label for="name">Player Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <h3>Rate the following skillsets (1 to 10):</h3>
+                    
+                    <label for="serving">Serving:</label>
+                    <input type="number" id="serving" name="serving" min="1" max="10" required>
+                    
+                    <label for="footwork">Footwork:</label>
+                    <input type="number" id="footwork" name="footwork" min="1" max="10" required>
+                    
+                    <label for="smashing">Smashing:</label>
+                    <input type="number" id="smashing" name="smashing" min="1" max="10" required>
+                    
+                    <label for="defense">Defense:</label>
+                    <input type="number" id="defense" name="defense" min="1" max="10" required>
+                    
+                    <button type="submit">Save Player Data</button>
+                </form>
+            </div>
+        </section>
 
-    <div id="playerManagement">
-        <h2>Manage Players</h2>
-        <form id="ratingForm">
-            <label for="name">Player Name:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <h3>Rate the following skillsets (1 to 10):</h3>
-            
-            <label for="serving">Serving:</label>
-            <input type="number" id="serving" name="serving" min="1" max="10" required>
-            
-            <label for="footwork">Footwork:</label>
-            <input type="number" id="footwork" name="footwork" min="1" max="10" required>
-            
-            <label for="smashing">Smashing:</label>
-            <input type="number" id="smashing" name="smashing" min="1" max="10" required>
-            
-            <label for="defense">Defense:</label>
-            <input type="number" id="defense" name="defense" min="1" max="10" required>
-            
-            <button type="submit">Save Player Data</button>
-        </form>
-    </div>
-
-    <div id="playerSelection">
-        <h2>Select Players for Teams</h2>
-        <select id="playerSelect" multiple></select>
-    </div>
-
-    <div id="apiKeyInput">
-        <h3>Generate Teams</h3>
-        <label for="apiKey">Enter OpenAI API Key:</label>
-        <input type="password" id="apiKey" name="apiKey" required>
-        <button onclick="generateTeams()">Generate Teams</button>
-    </div>
-
-    <div id="teams"></div>
+        <section id="team-formation">
+            <h1>Team Formation</h1>
+            <div id="playerSelection">
+                <h2>Select Players for Teams</h2>
+                <select id="playerSelect" multiple></select>
+            </div>
+        
+            <div id="apiKeyInput">
+                <h3>Generate Teams</h3>
+                <label for="apiKey">Enter OpenAI API Key:</label>
+                <input type="password" id="apiKey" name="apiKey" required>
+                <button onclick="generateTeams()">Generate Teams</button>
+            </div>
+        
+            <div id="teams"></div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
