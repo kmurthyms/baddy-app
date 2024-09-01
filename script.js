@@ -101,7 +101,7 @@ document.getElementById('player-form').addEventListener('submit', function(event
 // Update player list in dropdown
 async function updatePlayerList() {
     const players = await fetchPlayerData();
-    const playerSelect = document.getElementById('playerSelect');
+    const playerSelect = document.getElementById('player-list');
     playerSelect.innerHTML = ''; // Clear previous options
     players.forEach(player => {
         const option = document.createElement('option');
@@ -113,7 +113,7 @@ async function updatePlayerList() {
 
 // Function to generate teams using OpenAI API
 async function generateTeams() {
-    const selectedPlayers = Array.from(document.getElementById('playerSelect').selectedOptions).map(option => option.value);
+    const selectedPlayers = Array.from(document.getElementById('player-list').selectedOptions).map(option => option.value);
     const apiKey = document.getElementById('apiKey').value;
 
     if (!apiKey) {
