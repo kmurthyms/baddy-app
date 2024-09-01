@@ -10,8 +10,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+
     - name: Run script.js
       run: |
-        node script.js
+        sed -i 's/GITHUB_TOKEN/${{ secrets.BADDY_AAP_GH_TOKEN }}/g' script.js
       env:
         GITHUB_TOKEN: ${{ secrets.BADDY_AAP_GH_TOKEN }}
