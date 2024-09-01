@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Event listener for saving player data
-document.getElementById('ratingForm').addEventListener('submit', function(event) {
+document.getElementById('player-form').addEventListener('submit', function(event) {
     event.preventDefault();
     savePlayerData();
 });
