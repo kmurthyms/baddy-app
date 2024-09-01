@@ -89,18 +89,22 @@ button:hover {
 
 /* Star Rating Styles */
 .star-rating {
-    display: flex;
-    direction: row;
+    direction: ltr;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .star-rating input[type="radio"] {
     display: none;
 }
 
+
 .star-rating label {
-    color: #ccc;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    color: #ddd;
     cursor: pointer;
+    transition: color 0.3s;
 }
 
 .star-rating input[type="radio"]:checked ~ label {
