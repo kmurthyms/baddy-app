@@ -20,3 +20,9 @@ jobs:
         sed -i 's/GITHUB_TOKEN/${{ secrets.BADDY_AAP_GH_TOKEN }}/g' script.js
       env:
         GITHUB_TOKEN: ${{ secrets.BADDY_AAP_GH_TOKEN }}
+    
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.BADDY_AAP_GH_TOKEN }}
+        publish_dir: ./  # 
