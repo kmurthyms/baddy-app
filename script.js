@@ -1,17 +1,3 @@
-async function fetchDataFromGitHub() {
-    const response = await fetch('https://api.github.com/user/repos', {
-        method: 'GET',
-        headers: {
-            'Authorization': `token ${GITHUB_TOKEN}`,
-            'Content-Type': 'application/json',
-        },
-    });
-    const data = await response.json();
-    console.log(data);
-}
-
-fetchDataFromGitHub();
-
 // Fetch player data from JSON (assuming hosted on GitHub Pages)
 async function fetchPlayerData() {
     const response = await fetch('players.json');
@@ -30,7 +16,7 @@ async function savePlayerData() {
     };
 
     const token = GITHUB_TOKEN; // GitHub API token
-    const url = 'https://api.github.com/repos/YOUR_USERNAME/YOUR_REPOSITORY/contents/players.json';
+    const url = 'https://api.github.com/repos/kmurthyms/baddy-app/contents/players.json';
 
     // Get current content and SHA
     const response = await fetch(url, {
