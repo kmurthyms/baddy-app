@@ -55,6 +55,43 @@ async function savePlayerData() {
     updatePlayerList(); // Update the player selection list
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to show the selected section and hide others
+    function showSection(id) {
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(section => {
+            if (section.id === id) {
+                section.classList.add('active');
+            } else {
+                section.classList.remove('active');
+            }
+        });
+    }
+
+    // Expose the function to global scope for the onclick handlers
+    window.showSection = showSection;
+
+    // Optional: Show the default section if needed
+    showSection('add-rate-player'); // Show "Add and Rate Player" section by default
+
+    // Handle form submission
+    const playerForm = document.getElementById('player-form');
+    playerForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const playerName = document.getElementById('player-name').value;
+        const rating = document.querySelector('input[name="rating"]:checked');
+        
+        if (rating) {
+            const playerRating = rating.value;
+            console.log(`Player Name: ${playerName}, Rating: ${playerRating}`);
+            // Add logic to handle player addition and rating here
+        } else {
+            console.log('Please select a rating.');
+        }
+    });
+});
+
 // Event listener for saving player data
 document.getElementById('ratingForm').addEventListener('submit', function(event) {
     event.preventDefault();
