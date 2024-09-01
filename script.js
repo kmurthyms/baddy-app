@@ -1,3 +1,19 @@
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+
+async function fetchDataFromGitHub() {
+    const response = await fetch('https://api.github.com/user/repos', {
+        method: 'GET',
+        headers: {
+            'Authorization': `token ${GITHUB_TOKEN}`,
+            'Content-Type': 'application/json',
+        },
+    });
+    const data = await response.json();
+    console.log(data);
+}
+
+fetchDataFromGitHub();
+
 // Fetch player data from JSON (assuming hosted on GitHub Pages)
 async function fetchPlayerData() {
     const response = await fetch('players.json');
@@ -15,7 +31,7 @@ async function savePlayerData() {
         defense: document.getElementById('defense').value
     };
 
-    const token = 'YOUR_GITHUB_PERSONAL_ACCESS_TOKEN'; // GitHub API token
+    const token = GITHUB_TOKEN; // GitHub API token
     const url = 'https://api.github.com/repos/YOUR_USERNAME/YOUR_REPOSITORY/contents/players.json';
 
     // Get current content and SHA
@@ -157,3 +173,5 @@ async function generateTeams() {
 
 // Initialize player list on load
 updatePlayerList();
+
+

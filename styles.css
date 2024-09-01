@@ -89,7 +89,7 @@ button:hover {
 
 /* Star Rating Styles */
 .star-rating {
-    direction: ltr;
+    direction: rtl;
     display: inline-flex;
     justify-content: flex-start;
     align-items: center;
