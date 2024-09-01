@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Badminton Team Formation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>AI-based Badminton Team Formation</h1>
+
+    <div id="playerManagement">
+        <h2>Manage Players</h2>
+        <form id="ratingForm">
+            <label for="name">Player Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <h3>Rate the following skillsets (1 to 10):</h3>
+            
+            <label for="serving">Serving:</label>
+            <input type="number" id="serving" name="serving" min="1" max="10" required>
+            
+            <label for="footwork">Footwork:</label>
+            <input type="number" id="footwork" name="footwork" min="1" max="10" required>
+            
+            <label for="smashing">Smashing:</label>
+            <input type="number" id="smashing" name="smashing" min="1" max="10" required>
+            
+            <label for="defense">Defense:</label>
+            <input type="number" id="defense" name="defense" min="1" max="10" required>
+            
+            <button type="submit">Save Player Data</button>
+        </form>
+    </div>
+
+    <div id="playerSelection">
+        <h2>Select Players for Teams</h2>
+        <select id="playerSelect" multiple></select>
+    </div>
+
+    <div id="apiKeyInput">
+        <h3>Generate Teams</h3>
+        <label for="apiKey">Enter OpenAI API Key:</label>
+        <input type="password" id="apiKey" name="apiKey" required>
+        <button onclick="generateTeams()">Generate Teams</button>
+    </div>
+
+    <div id="teams"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
