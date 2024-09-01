@@ -8,11 +8,13 @@ async function fetchPlayerData() {
 // Add or update player data in JSON file via GitHub API (for player management)
 async function savePlayerData() {
     const playerData = {
-        name: document.getElementById('name').value,
+        name: document.getElementById('player-name').value,
         serving: document.getElementById('serving').value,
         footwork: document.getElementById('footwork').value,
-        smashing: document.getElementById('smashing').value,
-        defense: document.getElementById('defense').value
+        smashing: document.getElementById('attack').value,
+        defense: document.getElementById('defense').value,
+        defense: document.getElementById('doubles-coordination').value,
+        defense: document.getElementById('agility').value
     };
 
     const token = GITHUB_TOKEN; // GitHub API token
