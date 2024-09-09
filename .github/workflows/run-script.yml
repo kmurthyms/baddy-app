@@ -17,9 +17,9 @@ jobs:
 
     - name: Run script.js
       run: |
-        sed -i 's/GITHUB_TOKEN/${{ secrets.BADDY_AAP_GH_TOKEN }}/g' script.js
+        sed -i 's/filename/${{ env.BADDYAPP_FILEIO }}/g' script.js
       env:
-        GITHUB_TOKEN: ${{ secrets.BADDY_AAP_GH_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
