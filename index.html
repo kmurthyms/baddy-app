@@ -1,129 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Badminton Rating Webpage</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Badminton Rating App</title>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#add-rate-player" onclick="showSection('add-rate-player')">Add and Rate Player</a></li>
-                <li><a href="#team-formation" onclick="showSection('team-formation')">Team Formation</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Navigation Bar -->
+  <nav>
+    <button id="add-rate-btn">Add and Rate Player</button>
+    <button id="team-formation-btn">Team Formation</button>
+  </nav>
 
-    <main>
-        <section id="add-rate-player" class="content-section">
-            <h1>Add and Rate Player</h1>
-            <!-- Form to add and rate players -->
-            <form id="player-form">
-                <label for="player-name">Player Name:</label>
-                <input type="text" id="player-name" name="player-name" required>
+  <!-- Add and Rate Player Section -->
+  <section id="player-form" style="display: none;">
+    <h2>Add and Rate Player</h2>
+    
+    <label for="existing-player-select">Select Existing Player:</label>
+    <select id="existing-player-select">
+      <option value="">--Select Player--</option>
+      <!-- Existing players will be dynamically added here -->
+    </select>
 
-                <label for="player-skill">Skill Rating:</label>
-                <!-- <input type="number" id="player-skill" name="player-skill" min="1" max="10" required> -->
-                <h3>Rate the following skillsets (1 to 5):</h3>
-                    
-                <div class="skill-rating">
-                    <label for="serving">Serving:</label>
-                    <div class="star-rating" id="serving">
-                        <input type="radio" id="serving-star1" name="serving" value="1"><label for="serving-star1" title="1 star">&#9733;</label>
-                        <input type="radio" id="serving-star2" name="serving" value="2"><label for="serving-star2" title="2 stars">&#9733;</label>
-                        <input type="radio" id="serving-star3" name="serving" value="3"><label for="serving-star3" title="3 stars">&#9733;</label>
-                        <input type="radio" id="serving-star4" name="serving" value="4"><label for="serving-star4" title="4 stars">&#9733;</label>
-                        <input type="radio" id="serving-star5" name="serving" value="5"><label for="serving-star5" title="5 stars">&#9733;</label>
-                    </div>
-                </div>
+    <label for="player-name">Or Enter New Player Name:</label>
+    <input id="player-name" type="text" placeholder="Player Name" />
 
-                <div class="skill-rating">
-                    <label for="footwork">Footwork:</label>
-                    <div class="star-rating" id="footwork">
-                        <input type="radio" id="footwork-star1" name="footwork" value="1"><label for="footwork-star1" title="1 star">&#9733;</label>
-                        <input type="radio" id="footwork-star2" name="footwork" value="2"><label for="footwork-star2" title="2 stars">&#9733;</label>
-                        <input type="radio" id="footwork-star3" name="footwork" value="3"><label for="footwork-star3" title="3 stars">&#9733;</label>
-                        <input type="radio" id="footwork-star4" name="footwork" value="4"><label for="footwork-star4" title="4 stars">&#9733;</label>
-                        <input type="radio" id="footwork-star5" name="footwork" value="5"><label for="footwork-star5" title="5 stars">&#9733;</label>
-                    </div>
-                </div>
+    <div class="rating-container">
+      <h3>Rate Skillsets (1-5 stars)</h3>
+      
+      <div class="skillset">
+        <label>Attack</label>
+        <div class="stars" id="attack-rating">
+          <!-- Star rating system for Attack -->
+          ${getStarRatingHTML('attack')}
+        </div>
+      </div>
 
-                <div class="skill-rating">
-                    <label for="attack">Attack:</label>
-                    <div class="star-rating" id="attack">
-                        <input type="radio" id="attack-star1" name="attack" value="1"><label for="attack-star1" title="1 star">&#9733;</label>
-                        <input type="radio" id="attack-star2" name="attack" value="2"><label for="attack-star2" title="2 stars">&#9733;</label>
-                        <input type="radio" id="attack-star3" name="attack" value="3"><label for="attack-star3" title="3 stars">&#9733;</label>
-                        <input type="radio" id="attack-star4" name="attack" value="4"><label for="attack-star4" title="4 stars">&#9733;</label>
-                        <input type="radio" id="attack-star5" name="attack" value="5"><label for="attack-star5" title="5 stars">&#9733;</label>
-                    </div>
-                </div>
+      <div class="skillset">
+        <label>Defense</label>
+        <div class="stars" id="defense-rating">
+          <!-- Star rating system for Defense -->
+          ${getStarRatingHTML('defense')}
+        </div>
+      </div>
 
-                <div class="skill-rating">
-                    <label for="defense">Defense:</label>
-                    <div class="star-rating" id="defense">
-                        <input type="radio" id="defense-star1" name="defense" value="1"><label for="defense-star1" title="1 star">&#9733;</label>
-                        <input type="radio" id="defense-star2" name="defense" value="2"><label for="defense-star2" title="2 stars">&#9733;</label>
-                        <input type="radio" id="defense-star3" name="defense" value="3"><label for="defense-star3" title="3 stars">&#9733;</label>
-                        <input type="radio" id="defense-star4" name="defense" value="4"><label for="defense-star4" title="4 stars">&#9733;</label>
-                        <input type="radio" id="defense-star5" name="defense" value="5"><label for="defense-star5" title="5 stars">&#9733;</label>
-                    </div>
-                </div>
+      <div class="skillset">
+        <label>Serving</label>
+        <div class="stars" id="speed-rating">
+          <!-- Star rating system for serving -->
+          ${getStarRatingHTML('serving')}
+        </div>
+      </div>
 
-                <div class="skill-rating">
-                    <label for="doubles-coordination">Doubles Coordination:</label>
-                    <div class="star-rating" id="doubles-coordination">
-                        <input type="radio" id="doubles-coordination-star1" name="doubles-coordination" value="1"><label for="doubles-coordination-star1" title="1 star">&#9733;</label>
-                        <input type="radio" id="doubles-coordination-star2" name="doubles-coordination" value="2"><label for="doubles-coordination-star2" title="2 stars">&#9733;</label>
-                        <input type="radio" id="doubles-coordination-star3" name="doubles-coordination" value="3"><label for="doubles-coordination-star3" title="3 stars">&#9733;</label>
-                        <input type="radio" id="doubles-coordination-star4" name="doubles-coordination" value="4"><label for="doubles-coordination-star4" title="4 stars">&#9733;</label>
-                        <input type="radio" id="doubles-coordination-star5" name="doubles-coordination" value="5"><label for="doubles-coordination-star5" title="5 stars">&#9733;</label>
-                    </div>
-                </div>
+      <div class="skillset">
+        <label>Footwork</label>
+        <div class="stars" id="stamina-rating">
+          <!-- Star rating system for footwork -->
+          ${getStarRatingHTML('footwork')}
+        </div>
+      </div>
 
-                <div class="skill-rating">
-                    <label for="agility">Agility:</label>
-                    <div class="star-rating" id="agility">
-                        <input type="radio" id="agility-star1" name="agility" value="1"><label for="agility-star1" title="1 star">&#9733;</label>
-                        <input type="radio" id="agility-star2" name="agility" value="2"><label for="agility-star2" title="2 stars">&#9733;</label>
-                        <input type="radio" id="agility-star3" name="agility" value="3"><label for="agility-star3" title="3 stars">&#9733;</label>
-                        <input type="radio" id="agility-star4" name="agility" value="4"><label for="agility-star4" title="4 stars">&#9733;</label>
-                        <input type="radio" id="agility-star5" name="agility" value="5"><label for="agility-star5" title="5 stars">&#9733;</label>
-                    </div>
-                </div>
-                    
-                <button type="submit">Save Player Data</button>
-            </form>
-            <!-- Player list will be displayed here -->
-            <div id="player-list">
-                <!-- Player list will be dynamically populated here -->
-            </div>
-        </section>
+      <div class="skillset">
+        <label>Team Play</label>
+        <div class="stars" id="teamplay-rating">
+          <!-- Star rating system for Team Play -->
+          ${getStarRatingHTML('teamplay')}
+        </div>
+      </div>
 
-        <section id="team-formation" class="content-section">
-            <h1>Team Formation</h1>
-            <!-- Form to select players and input API key -->
-            <form id="team-form">
-                <h1>Team Formation</h1>
-                <label for="playerSelect">Select Players:</label>
-                <select id="playerSelect" name="players" multiple>
-                    <!-- Player options will be dynamically populated here -->
-                </select>
+      <div class="skillset">
+        <label>Agility</label>
+        <div class="stars" id="teamplay-rating">
+          <!-- Star rating system for agility -->
+          ${getStarRatingHTML('agility')}
+        </div>
+      </div>
+    </div>
 
-                <label for="api-key">ChatGPT API Key:</label>
-                <input type="password" id="apiKey" name="apiKey" required>
+    <button id="submit">Submit</button>
+  </section>
 
-                <button type="button" onclick="generateTeams()">Generate Teams</button>
-            </form>
-            <!-- Teams will be displayed here -->
-            <div id="teams">
-                <!-- Teams will be dynamically populated here -->
-            </div>
-        </section>
-    </main>
+  <!-- Team Formation Section -->
+  <section id="team-formation-section" style="display: none;">
+    <h2>Team Formation</h2>
 
-    <script src="script.js"></script>
+    <!-- Master Password Prompt -->
+    <div id="password-prompt">
+      <label for="master-password">Enter Master Password:</label>
+      <input type="password" id="master-password" placeholder="Master Password" />
+      <button id="password-submit-btn">Submit</button>
+    </div>
+
+    <!-- Player Selection for Team Formation (Initially Hidden) -->
+    <div id="team-formation-content" style="display: none;">
+      <h3>Select Players</h3>
+      <ul id="players-list">
+        <!-- Players will be dynamically loaded here -->
+      </ul>
+
+      <h3>Selected Players</h3>
+      <ul id="selected-players">
+        <!-- Selected players will be added here -->
+      </ul>
+
+      <button id="generate-teams-btn" style="display: none;">Generate Team</button>
+    </div>
+  </section>
+
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
