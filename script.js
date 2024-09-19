@@ -1,17 +1,36 @@
-// Fetch player data from JSON (assuming hosted on GitHub Pages)
-const firebaseConfig = {
-    apiKey: process.env.FIREBASE_API_KEY,
-    // authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.FIREBASE_PROJECT_ID,
-    // storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.FIREBASE_APP_ID,
-  };
+// // Fetch player data from JSON (assuming hosted on GitHub Pages)
+// const firebaseConfig = {
+//     apiKey: process.env.FIREBASE_API_KEY,
+//     // authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+//     projectId: process.env.FIREBASE_PROJECT_ID,
+//     // storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+//     messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+//     appId: process.env.FIREBASE_APP_ID,
+//   };
   
-firebase.initializeApp(firebaseConfig);
+// firebase.initializeApp(firebaseConfig);
 
 // Initialize Firestore
 const db = firebase.firestore();
+
+function loadFirebaseConfig() {
+  const db = firebase.firestore();
+  
+  // Fetch Firebase config from Firestore
+  return db.collection('config').doc('firebaseConfig').get().then((doc) => {
+    if (doc.exists) {
+      const config = doc.data();
+      
+      // Initialize Firebase with the fetched config
+      firebase.initializeApp(config);
+      console.log("Firebase initialized with dynamic config:", config);
+    } else {
+      console.error("No Firebase config found in Firestore");
+    }
+  }).catch((error) => {
+    console.error("Error fetching Firebase config: ", error);
+  });
+}
 
 // Load existing players into the dropdown
 function loadExistingPlayers() {
