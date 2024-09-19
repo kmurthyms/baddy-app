@@ -1,119 +1,83 @@
-/* General Styles */
+/* Base styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    background-color: #f4f4f4;
 }
 
-/* Navigation Bar */
-header {
+/* Navigation styles */
+nav {
     background-color: #333;
-    color: white;
-    padding: 1rem;
+    color: #fff;
+    padding: 10px;
 }
 
 nav ul {
-    list-style: none;
-    margin: 0;
+    list-style-type: none;
     padding: 0;
-    display: flex;
-    justify-content: center;
 }
 
 nav ul li {
-    margin: 0 1rem;
+    display: inline;
+    margin-right: 10px;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
+nav ul li button {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
 }
 
-nav ul li a:hover {
+nav ul li button:hover {
     text-decoration: underline;
 }
 
-/* Main Content */
-main {
-    padding: 2rem;
+/* Section styles */
+section {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
-/* Sections */
-.content-section {
-    display: none; /* Hide all sections by default */
-    margin-bottom: 2rem;
-}
-
-.content-section.active {
-    display: block; /* Display the active section */
-}
-
-h1 {
-    font-size: 2rem;
-    border-bottom: 2px solid #333;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-/* Form Styles */
+/* Form styles */
 form {
-    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
-label {
-    display: block;
-    margin: 0.5rem 0;
+form label {
+    margin-bottom: 5px;
 }
 
-input[type="text"],
-input[type="number"],
-select {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
+form input,
+form button {
+    margin-bottom: 10px;
+    padding: 10px;
 }
 
-button {
-    padding: 0.5rem 1rem;
-    background-color: #333;
-    color: white;
+form button {
+    background-color: #007bff;
+    color: #fff;
     border: none;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #555;
+form button:hover {
+    background-color: #0056b3;
 }
 
-/* Star Rating Styles */
-.star-rating {
-    direction: rtl;
-    display: inline-flex;
-    justify-content: flex-start;
-    align-items: center;
+/* List styles */
+ul {
+    padding: 0;
+    list-style-type: none;
 }
 
-.star-rating input[type="radio"] {
-    display: none;
+ul li {
+    background-color: #fff;
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
-
-
-.star-rating label {
-    font-size: 1.5rem;
-    color: #ddd;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.star-rating input[type="radio"]:checked ~ label {
-    color: #f5b301; /* Yellow color for selected stars */
-}
-
-.star-rating label:hover,
-.star-rating label:hover ~ label {
-    color: #f5b301; /* Yellow color on hover */
-}
-
-
